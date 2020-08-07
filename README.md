@@ -5,4 +5,4 @@ This program was created as part of a project to determine the minimum angle tha
 
 The reason why a program was created to execute rather basic equations is due to the nature of the trigonometry involved in the project. The evaluation of the trigonometry depends on certain constants that are defined by what the user inputs in the beginning of the program. The use of if/else statements helped to streamline the calculation process. From here, the program evolved into something that presented contextualized data to the user.
 
-In order to use this program, simply run it and answer the series of prompts that are provided. As a result you will be able to determine what angles of a handstand are possible for you!
+This program uses Python 3 - simply run it and answer the series of prompts that are provided. As a result you will be able to determine what angles of a handstand are possible for you!
