@@ -1,5 +1,7 @@
 import math
 
+## Define a function that will evaluate the amount of force for a given theta ##
+
 def eval(L,Larm,Lhand,m,Lcom,theta):
     
     lessThan90=False
@@ -8,23 +10,17 @@ def eval(L,Larm,Lhand,m,Lcom,theta):
     
     theta=math.radians(float(theta))
     
-    cos=math.cos(theta)
-    sin=math.sin(theta)
-    pi=math.pi
-    halfPi=pi/2
-    halfArm=.5*Larm
-    sixSevenths=Lhand*6/7
-    quarter=.25*Lhand
-    
     ## Calculating thetaR for digitorum ##
+    
     thetaRD=math.acos(sixSevenths/halfArm)
     # print('thetaRD = '+str(math.degrees(thetaRD)))
     
     ## Calculating thetaR for carpi ##
+    
     thetaRC=math.acos(quarter/halfArm)
     # print('thetaRC = '+str(math.degrees(thetaRC)))
     
-    ## Determine which realm we are in ##
+    ## Determine which trigonometric realm we are in ##
     
     if theta<halfPi:
         lessThan90=True
@@ -37,7 +33,7 @@ def eval(L,Larm,Lhand,m,Lcom,theta):
     
     if not lessThan90:
         theta=pi-theta
-        
+    
     cos=math.cos(theta)
     sin=math.sin(theta)
     pi=math.pi
@@ -93,7 +89,7 @@ def eval(L,Larm,Lhand,m,Lcom,theta):
     # print()
     # print(str(Tgrav)+'='+str(TFoCoefficient)+' Fo + '+str(TFdCoefficient)+' Fd')
     
-    ## Fd=4Fo/6 ##
+    ## Relate the two forces via Fd=4Fo/6 equation ##
     
     FcFinal1=4*TFdCoefficient/6
     FcFinal2=TFcCoefficient+FcFinal1
@@ -109,11 +105,16 @@ def eval(L,Larm,Lhand,m,Lcom,theta):
     Fabs = m*9.8*cos
     Fbutt =.62*m*9.8*cos
     
-    return (math.degrees(theta),Tgrav,FcFinal,FdFinal,Fshoulder,Fabs,Fbutt)
+    ## Return a tuple containing all of the information needed for further evaluation ##
     
+    return (math.degrees(theta),Tgrav,FcFinal,FdFinal,Fshoulder,Fabs,Fbutt)
+
+## Define a function that will contextualize and present the values calculated in eval() function ##
+
 def go():
     
     ## Data collection ##
+    
     print()
     print('To begin, please provide some dimensions:')
     print()
@@ -150,7 +151,7 @@ def go():
     
     print('-----------------------------------------------------------------------')
     
-    ## Evaluate ##
+    ## Contextualize ##
     
     lst=[]
     for n in [90,89,88,87,86,85,84,83,82,81,80]:
@@ -215,8 +216,10 @@ def go():
     print('    butt and thighs is equivalent to '+str(round(finalB,2))+'% of your weight')
     
     print()
-    print('The amount of force required by each muscle group from 90 degrees to 80 degrees in terms of lbs of force:')
     
+    ## Display data ##
+    
+    print('The amount of force required by each muscle group from 90 degrees to 80 degrees in terms of lbs of force:')
         
     print('angle(deg)  Fcarpi      Fdigitorum  Fshoulder   Fabs        Fbutt')
     
